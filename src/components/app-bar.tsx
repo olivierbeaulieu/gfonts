@@ -1,14 +1,17 @@
 import React, { ChangeEvent } from 'react'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
 import Paper from '@material-ui/core/Paper'
 import InputBase from '@material-ui/core/InputBase'
 import IconButton from '@material-ui/core/IconButton'
 import SearchIcon from '@material-ui/icons/Search'
 
-type Props = {
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+type OnSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => void
+type SearchInputProps = {
+    onChange: OnSearchChange
 }
 
-export default function CustomizedInputBase(props: Props): React.ReactElement {
+function SearchInput(props: SearchInputProps): React.ReactElement {
     return (
         <Paper
             style={{
@@ -36,5 +39,22 @@ export default function CustomizedInputBase(props: Props): React.ReactElement {
                 <SearchIcon />
             </IconButton>
         </Paper>
+    )
+}
+
+type AppBarProps = {
+    onSearchInput: OnSearchChange
+}
+export default function MyAppBar(props: AppBarProps): React.ReactElement {
+    const { onSearchInput } = props
+
+    return (
+        <div style={{ flexGrow: 1, marginBottom: '10px' }}>
+            <AppBar position="static" color="default">
+                <Toolbar style={{ justifyContent: 'center' }}>
+                    <SearchInput onChange={onSearchInput} />
+                </Toolbar>
+            </AppBar>
+        </div>
     )
 }

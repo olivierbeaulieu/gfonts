@@ -5,14 +5,18 @@
   "dependencies": {
     "@material-ui/core": "^4.0.2",
     "@material-ui/icons": "^4.0.1",
+    "@types/underscore.string": "0.0.37",
     "dotenv": "^8.0.0",
     "material-ui": "^0.20.2",
     "node-fetch": "^2.6.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
+    "react-spinners-kit": "^1.9.0",
+    "styled-components": "^4.3.1",
     "styled-jsx": "^3.2.1",
-    "typescript": "^3.5.1"
+    "typescript": "^3.5.1",
+    "underscore.string": "^3.3.5"
   },
   "scripts": {
     "start": "react-scripts start",
