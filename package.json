@@ -3,9 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.0.2",
+    "@material-ui/icons": "^4.0.1",
+    "dotenv": "^8.0.0",
+    "material-ui": "^0.20.2",
+    "node-fetch": "^2.6.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "styled-jsx": "^3.2.1",
+    "typescript": "^3.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -27,5 +34,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.19",
+    "@types/react-dom": "^16.8.4"
   }
 }
