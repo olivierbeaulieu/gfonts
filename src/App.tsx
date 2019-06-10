@@ -5,6 +5,7 @@ import FontListItem from './components/font-list-item'
 import Grid from '@material-ui/core/Grid'
 import { slugify } from 'underscore.string'
 import useInfiniteScroll from './components/use-infinite-scroll'
+import { SortBy } from './components/app-bar'
 import './index.css'
 
 const resultsPerPage = 12
@@ -41,12 +42,15 @@ function FontList(props: { fontList: GoogleFont[] }): React.ReactElement {
 export default function App(): React.ReactElement {
     const [fonts, setFonts] = useState<GoogleFont[]>([])
     const [filter, setFilter] = useState('')
+    const [sortBy, setSortBy] = useState('popularity')
 
     // console.log('fonts', fonts)
 
     useEffect(() => {
-        getWebfonts().then(webfontList => setFonts(webfontList.items))
-    }, [])
+        getWebfonts({ sortBy: sortBy as SortBy }).then(webfontList =>
+            setFonts(webfontList.items)
+        )
+    }, [sortBy])
 
     const filteredFonts = fonts.filter(font =>
         font.family.toLowerCase().includes(filter)
@@ -64,9 +68,11 @@ export default function App(): React.ReactElement {
                 }}
             >
                 <AppBar
+                    sortBy={sortBy as SortBy}
                     onSearchInput={event =>
                         setFilter(event.target.value.toLowerCase())
                     }
+                    onSortChange={value => setSortBy(value)}
                 />
             </div>
 

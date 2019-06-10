@@ -1,4 +1,5 @@
 import config from '../config'
+import { SortBy } from '../components/app-bar'
 
 export type GoogleFont = {
     category: string
@@ -11,8 +12,13 @@ export type GoogleFont = {
     version: string
 }
 
-export function getWebfonts(): Promise<{ items: GoogleFont[] }> {
+type Props = {
+    sortBy: SortBy
+}
+export function getWebfonts(props: Props): Promise<{ items: GoogleFont[] }> {
+    const { sortBy } = props
+
     return fetch(
-        `https://www.googleapis.com/webfonts/v1/webfonts?key=${config.GOOGLE_API_KEY}`
+        `https://www.googleapis.com/webfonts/v1/webfonts?key=${config.GOOGLE_API_KEY}&sort=${sortBy}`
     ).then(response => response.json())
 }
