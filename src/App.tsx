@@ -53,16 +53,26 @@ export default function App(): React.ReactElement {
     )
 
     return (
-        <>
-            <AppBar
-                onSearchInput={event =>
-                    setFilter(event.target.value.toLowerCase())
-                }
-            />
+        <div style={{ paddingTop: '60px' }}>
+            <div
+                style={{
+                    position: 'fixed',
+                    zIndex: 1000,
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                }}
+            >
+                <AppBar
+                    onSearchInput={event =>
+                        setFilter(event.target.value.toLowerCase())
+                    }
+                />
+            </div>
 
             <div className="container">
                 <FontList fontList={filteredFonts} />
             </div>
-        </>
+        </div>
     )
 }
